@@ -26,4 +26,4 @@ include(cmake/ConfigureCompiler.cmake)
 # Subdirectories
 #================================
 add_subdirectory(data)
-add_subdirectory(lab0_intro)
+add_subdirectory(hw0_cpp)
