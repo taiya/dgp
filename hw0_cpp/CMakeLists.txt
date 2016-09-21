@@ -6,3 +6,8 @@ file(GLOB_RECURSE SHADERS "*.glsl")
 
 add_executable(${EXERCISENAME} ${SOURCES} ${HEADERS} ${SHADERS})
 target_link_libraries(${EXERCISENAME} ${LIBRARIES})
+
+#================================
+# Source groups (????)
+#================================
+#source_group("source" FILES ${SOURCES})
