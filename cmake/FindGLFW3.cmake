@@ -30,10 +30,11 @@ FIND_PATH( GLFW3_INCLUDE_DIRS GLFW/glfw3.h
     /opt/X11/include
     /opt/include )
 
-FIND_LIBRARY( GLFW3_LIBRARIES NAMES glfw3 PATHS
+FIND_LIBRARY( GLFW3_LIBRARIES NAMES glfw3 glfw PATHS
     $ENV{GLFWDIR}/lib
     $ENV{GLFWDIR}/support/msvc80/Debug
     $ENV{GLFWDIR}/support/msvc80/Release
+    /usr/lib/x86_64-linux-gnu/
     /usr/local/lib
     /usr/local/X11R6/lib
     /usr/X11R6/lib
