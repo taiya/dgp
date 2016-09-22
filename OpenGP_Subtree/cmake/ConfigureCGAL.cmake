@@ -1,6 +1,0 @@
-set(CGAL_FIND_QUIETLY TRUE)
-find_package(CGAL)
-if(CGAL_FOUND)
-    add_definitions(-DUSE_CGAL)
-    list(APPEND LIBRARIES ${CGAL_LIBRARIES})
-endif()
