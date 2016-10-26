@@ -24,9 +24,9 @@ void Smoother::use_cotan_laplacian()
     typedef Eigen::Triplet<Scalar> Triplet;
 
     /* todo:
-    Build the cotangent laplacian matrix into L.
+    Build the cotangent weighted laplacian matrix into L.
     See equation 7 here: http://www.cs.jhu.edu/~misha/Fall07/Papers/Nealen06.pdf#2
-    (you have to translate the summation into a matrix)
+    tip: Translate that summation into a matrix. Also, don't include the area weight.
     */
     std::vector<Triplet> tripletList;
     tripletList.reserve(n * n);
@@ -53,7 +53,7 @@ void Smoother::use_graph_laplacian()
     typedef Eigen::Triplet<Scalar> Triplet;
 
     /* todo:
-    Build the uniform laplacian matrix into L.
+    Build the uniform weighted laplacian matrix into L.
     See "Laplacian matrix" here: https://en.wikipedia.org/wiki/Laplacian_matrix#Example
     */
     std::vector<Triplet> tripletList;
@@ -86,6 +86,7 @@ void Smoother::smooth_explicit(OpenGP::Scalar lambda)
     /* todo:
     Perform one iteration of the explicit solver and store the result in vertices_matrix(mesh)
     See: http://www.faculty.jacobs-university.de/llinsen/teaching/320491/Lecture13.pdf#22
+    tip: make sure your matrix dimensions match when assigning to vertices_matrix(mesh)
     */
     vertices_matrix(mesh) = P_t;
 }
@@ -102,7 +103,7 @@ void Smoother::smooth_implicit(OpenGP::Scalar lambda)
     /* todo:
     Perform one iteration of the implicit solver and store the result in vertices_matrix(mesh)
     See: http://www.faculty.jacobs-university.de/llinsen/teaching/320491/Lecture13.pdf#23
-    hint: use solve_linear_least_square (function below) to solve the linear system.
+    tip: use solve_linear_least_square (function below) to solve the linear system.
     */
     vertices_matrix(mesh) = P_t;
 }
