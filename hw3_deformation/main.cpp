@@ -37,7 +37,7 @@ struct SelectionWindow : public GlfwWindow
         this->scene.add(renderer);
     }
 
-    void mouse_press_callback(int button, int action, int /*mods*/) override
+    bool mouse_press_callback(int button, int action, int /*mods*/) override
     {
         using namespace OpenGP;
 
@@ -49,15 +49,18 @@ struct SelectionWindow : public GlfwWindow
                 glfwGetCursorPos(_window, &xPos, &yPos);
                 deformator.mouse_down(unproject_mouse(xPos, yPos));
                 mouse_clicked = true;
+                return true;
             }
             else
             {
                 mouse_clicked = false;
                 deformator.mouse_up();
+                return true;
             }
         }
 
         renderer.init_data();
+        return false;
     }
 
     void mouse_move_callback(double xPos, double yPos) override
