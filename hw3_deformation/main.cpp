@@ -8,7 +8,7 @@ using namespace OpenGP;
 struct SelectionWindow : public GlfwWindow
 {
     SurfaceMesh mesh;
-    Deform deformator = Deform(mesh, this->scene);
+    Deform deformator{mesh, this->scene};
     SurfaceMeshRenderFlat renderer = SurfaceMeshRenderFlat(mesh);
     bool mouse_clicked = false;
 
