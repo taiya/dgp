@@ -1,7 +1,6 @@
 #pragma once
 #include <Eigen/Sparse>
 #include <OpenGP/SurfaceMesh/SurfaceMesh.h>
-#include <OpenGP/Gl/SceneGraph.h>
 #include <OpenGP/GL/PointsRenderer.h>
 
 #define QUAD_MESH 0
@@ -10,7 +9,7 @@
 class Deform
 {
 public:
-    Deform(OpenGP::SurfaceMesh& mesh, OpenGP::SceneGraph& scene);
+    Deform(OpenGP::SurfaceMesh& mesh);
     ~Deform();
     
     void initialize();
@@ -25,7 +24,6 @@ private:
     void construct_permutation_matrix();
 
     OpenGP::SurfaceMesh& mesh;
-    OpenGP::SceneGraph& scene;
     OpenGP::SurfaceMesh::Vertex_property<OpenGP::Point> vpoint;
     OpenGP::SurfaceMesh::Vertex_property<int> vhandle;
     

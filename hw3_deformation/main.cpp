@@ -1,5 +1,5 @@
-#include <OpenGP/SurfaceMesh/SurfaceMesh.h>
 #include <OpenGP/GL/GlfwWindow.h>
+#include <OpenGP/SurfaceMesh/SurfaceMesh.h>
 #include <OpenGP/SurfaceMesh/GL/SurfaceMeshRenderFlat.h>
 #include <OpenGP/SurfaceMesh/GL/SurfaceMeshRenderCloud.h>
 #include "Deform.h"
@@ -8,7 +8,7 @@ using namespace OpenGP;
 struct SelectionWindow : public GlfwWindow
 {
     SurfaceMesh mesh;
-    Deform deformator{mesh, this->scene};
+    Deform deformator{mesh};
     SurfaceMeshRenderFlat renderer = SurfaceMeshRenderFlat(mesh);
     bool mouse_clicked = false;
 
@@ -92,6 +92,7 @@ struct SelectionWindow : public GlfwWindow
 
     bool key_callback(int key, int scancode, int action, int mods) override{
         GlfwWindow::key_callback(key, scancode, action, mods);
+        mDebug() << "Pressed key" << key;
         
         if (action == GLFW_PRESS)
         {

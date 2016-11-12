@@ -17,8 +17,8 @@ const std::vector<int> handleEntries = { 8, 22, 73, 90, 183 };
 const std::vector<int> handleIds = { 1, 2, 3, 4, 5 };
 #endif
 
-Deform::Deform(OpenGP::SurfaceMesh& mesh, OpenGP::SceneGraph& scene)
-    : mesh(mesh), scene(scene)
+Deform::Deform(OpenGP::SurfaceMesh& mesh)
+    : mesh(mesh)
 {
     vpoint = mesh.vertex_property<Point>("v:point");
     vhandle = mesh.add_vertex_property<int>("v:handle");
@@ -139,7 +139,7 @@ void Deform::select_handle(int index)
 }
 
 // this function is called every frame while the mouse is being dragged.
-void Deform::mouse_down(OpenGP::Point const& pos)
+void Deform::mouse_down(OpenGP::Point const& /*pos*/)
 {
     if (selected_handle == 0)
     {
