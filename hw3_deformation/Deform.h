@@ -34,7 +34,7 @@ private:
     int selected_handle;
     
     // number of unconstrained vertices
-    int u
+    int u;
     // number of constrained vertices
     int k;
     
