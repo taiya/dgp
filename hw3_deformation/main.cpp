@@ -63,13 +63,16 @@ struct SelectionWindow : public GlfwWindow
         return false;
     }
 
-    void mouse_move_callback(double xPos, double yPos) override
+    bool mouse_move_callback(double xPos, double yPos) override
     {
         if (mouse_clicked)
         {
             deformator.mouse_down(unproject_mouse(xPos, yPos));
             renderer.init_data();
+            return true;
         }
+        
+        return false;
     }
 
     OpenGP::Vec3 unproject_mouse(OpenGP::Scalar xPos, OpenGP::Scalar yPos){
