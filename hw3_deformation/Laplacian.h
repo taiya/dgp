@@ -83,19 +83,21 @@ struct Laplacian {
 
                 cotanAlpha = 1.0f / std::tan(alpha);
                 cotanBeta = 1.0f / std::tan(beta);
+                Scalar alphabeta = cotanAlpha + cotanBeta;
+                if (alphabeta < 0.0f)
+                {
+                    alphabeta = 0.0f;
+                }
 
-                omegaList.push_back(Triplet(v_i.idx(), v_j.idx(), -1));
-                cotanSum += cotanAlpha + cotanBeta;
+                omegaList.push_back(Triplet(v_i.idx(), v_j.idx(), alphabeta));
+                cotanSum += alphabeta;
 
                 area += (1 / 6.0f) * (d_ij.cross(d_ia)).norm();
                 degree++;
             }
 
-            omegaList.push_back(Triplet(v_i.idx(), v_i.idx(),
-                                        (Scalar)degree));
-
-            areaList.push_back(Triplet(v_i.idx(), v_i.idx(),
-                                       1.0f / (2.0f * area)));
+            omegaList.push_back(Triplet(v_i.idx(), v_i.idx(), -cotanSum));
+            areaList.push_back(Triplet(v_i.idx(), v_i.idx(), 1.0f / (2.0f * area)));
         }
 
         L_omega.setFromTriplets(omegaList.begin(), omegaList.end());
